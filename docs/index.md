@@ -10,10 +10,10 @@ hero:
     src: /logo.png
     alt: vscode-extension-docs
   actions:
-    - text: Go -->
-      link: /fe/es6/
-    - text: 前端导航
-      link: /nav
+    - text: 使用文档
+      link: /use/
+    - text: 开发指南
+      link: /development/
       theme: alt
 features:
   - icon: 📖
