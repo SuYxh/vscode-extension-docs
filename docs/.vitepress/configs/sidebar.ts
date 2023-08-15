@@ -1,6 +1,21 @@
 import type { DefaultTheme } from "vitepress";
 
 export const sidebar: DefaultTheme.Config["sidebar"] = {
+  "/use/": [
+    {
+      text: "Yao 使用文档",
+      collapsed: false,
+      items: [
+        { text: "概览", link: "/use/简介" },
+        { text: "安装", link: "/use/安装" },
+        { text: "自动补全", link: "/use/自动补全" },
+        { text: "自动导入", link: "/use/自动导入" },
+        { text: "代码片段", link: "/use/代码片段" },
+        { text: "内置 zzui 官网", link: "/use/zzui" },
+        { text: "自定义设置", link: "/use/自定义设置" },
+      ],
+    }
+  ],
   "/development/": [
     {
       text: "vscode插件开发",
@@ -18,29 +33,5 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
         { text: "打包发布升级", link: "/development/10-打包发布升级" },
       ],
     }
-  ],
-  "/fe/": [
-    {
-      text: "JavaScript 基础知识",
-      collapsed: false,
-      items: [
-        { text: "数据类型", link: "/fe/javascript/types" },
-      ],
-    },
-    {
-      text: "ES6 常用知识点",
-      link: "/fe/es6/",
-    },
-  ],
-  "/pit/": [
-    {
-      text: "踩坑记录",
-      // collapsed: false,
-      items: [
-        { text: "npm 踩坑记录", link: "/pit/npm" },
-        { text: "PC 踩坑记录", link: "/pit/pc" },
-        { text: "H5 踩坑记录", link: "/pit/h5" },
-      ],
-    },
-  ],
+  ]
 };
