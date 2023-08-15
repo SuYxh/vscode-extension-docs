@@ -17,6 +17,16 @@ export const nav: DefaultTheme.Config["nav"] = [
     activeMatch: "^/development",
   },
   {
+    text: "常用插件",
+    link: "/plugin/",
+    activeMatch: "^/plugin",
+  },
+  {
+    text: "快捷键",
+    link: "/shortcutkey/",
+    activeMatch: "^/shortcutkey",
+  },
+  {
     text: "ZZUI",
     link: "https://fe.zhuanspirit.com/common/6.x/@zz-common/zz-ui/#/zh-CN/button",
   },
