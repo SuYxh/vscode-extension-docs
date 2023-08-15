@@ -16,4 +16,8 @@ export const nav: DefaultTheme.Config["nav"] = [
     link: "/development/",
     activeMatch: "^/development",
   },
+  {
+    text: "ZZUI",
+    link: "https://fe.zhuanspirit.com/common/6.x/@zz-common/zz-ui/#/zh-CN/button",
+  },
 ];

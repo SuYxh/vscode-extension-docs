@@ -3,9 +3,9 @@ layout: home
 layoutClass: "m-home-layout"
 
 hero:
-  name: vscode插件
-  text: Lifelong Growth
-  tagline: 道阻且长,行则将至
+  name: Yao
+  text: 内置 GPT4
+  tagline: 一款平平无奇的 vscode 插件
   image:
     src: /logo.png
     alt: vscode-extension-docs
@@ -17,19 +17,19 @@ hero:
       theme: alt
 features:
   - icon: 📖
-    title: 前端基础
-    details: 整理前端常用知识点<small>（面试八股文）</small><br />如有异议按你的理解为主，不接受反驳
-    link: /fe/javascript/types
-    linkText: 前端常用知识
+    title: 使用文档
+    details: 整理了常用功能的使用介绍，一看就会！
+    link: /use/
+    linkText: use docs
   - icon: 🐞
-    title: 踩坑记录
-    details: 那些年我们踩过的坑<br />总有一些让你意想不到的问题
-    link: /pit/npm
-    linkText: 踩坑记录
+    title: 源码解析
+    details: 核心功能剖析<br />总有一些奇奇怪怪的问题
+    link: /analysis/
+    linkText: source
   - icon: 💯
-    title: 吾志所向，一往无前。
-    details: '<small class="bottom-small">一个想躺平的小开发</small>'
-    link: https://www.yuque.com/jarvis-zzzhw/frontend
+    title: 开发指南
+    details: 包学会！
+    linkText: development
 ---
 
 <style>
@@ -43,9 +43,9 @@ features:
   opacity: 0.8;
 }
 
-.m-home-layout .item:last-child .details {
+/* .m-home-layout .item:last-child .details {
   display: flex;
   justify-content: flex-end;
   align-items: end;
-}
+} */
 </style>
