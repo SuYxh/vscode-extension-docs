@@ -118,3 +118,20 @@
 励志做到一次安装，永久使用。
 
 
+### 相关文档
+
+1、vscode 插件 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin
+
+2、vscode 插件后台 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-admin
+
+3、vscode 插件后端api http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-api
+
+4、vscode配套文档代码 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-docify
+
+5、vscode 插件api文档 https://www.showdoc.com.cn/zzvscodeplugin/7551418247207057
+
+6、vscode配套文档 https://ironc.gitee.io/vscode-docsify
+
+7、后台地址 https://vscode.ironc.cn 账号： zzfe 密码：zzfe
+
+8、api地址 https://vscode-api.ironc.cn/
