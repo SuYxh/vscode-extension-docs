@@ -7,6 +7,11 @@ export const nav: DefaultTheme.Config["nav"] = [
     activeMatch: "^/use",
   },
   {
+    text: "Yao 源码解析",
+    link: "/analysis/",
+    activeMatch: "^/analysis",
+  },
+  {
     text: "开发指南",
     link: "/development/",
     activeMatch: "^/development",

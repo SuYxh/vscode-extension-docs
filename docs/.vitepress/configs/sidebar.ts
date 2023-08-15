@@ -16,6 +16,18 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       ],
     }
   ],
+  "/analysis/": [
+    {
+      text: "Yao 核心功能解析",
+      collapsed: false,
+      items: [
+        { text: "自动补全", link: "/analysis/自动补全" },
+        { text: "自动导入", link: "/analysis/自动导入" },
+        { text: "代码片段", link: "/analysis/代码片段" },
+        { text: "内置 zzui 官网", link: "/analysis/webview" },
+      ],
+    }
+  ],
   "/development/": [
     {
       text: "vscode插件开发",
