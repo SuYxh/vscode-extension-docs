@@ -1,137 +1,89 @@
-# vscode功能简介
-
-- [简介](./简介.md)
-- [安装](./安装.md)
-- [自动补全](./自动补全.md)
-- [自动导入](./自动导入.md)
-- [代码片段](./代码片段.md)
-- [内置zzui官网](./zzui.md)
-- [自定义设置](./自定义设置.md)
-
-
-### 自动补全
-
-#### 1、自动补全`zzui`组件
-
-**触发方式：**在`vue`文件的`template`中键入 `<z` 
-
-**效果：** 提示`zzui`中的规范组件，和组件的相关介绍，如下图所示，按下回车，键入对应的组件，并附带组件的默认属性，并不是所有的组件都会有默认属性。如果当前没有引入相关的`zzui`组件，会在 `script` 中自动引入该组件并且自动`use`。
-
-> 目前只支持UI规范组件，会逐渐支持所有组件。
-
-![](https://qn.huat.xyz/mac/20211011172909.png)
-
-#### 2、组件属性提示
-
-**触发方式：** 在组件的开始标签中的任意位置按下**空格**
-
-**效果：** 出现该组件存在的可选属性，与`zzui`官网同步。插件安装的都比较多，属性出现的位置可能靠后，移入组件对应的属性时，右侧会出现对应的提示，如下图。
-
-![](https://qn.huat.xyz/mac/20211011173034.png)
-
-#### 3、组件属性值提示
-
-**触发方式：** 在组件的属性中按下**空格**
-
-**效果：** 以`button`的`type`属性为例，在`type`中按下空格会出现`type`对应的属性值提示，与`zzui`官网同步，按下回车键进行选定，选定后会自动清除触发的空格，如下图所示。**并不是所有属性都会有提示！**
-
-![](https://qn.huat.xyz/mac/20211011173122.png)
-
-
-
-### 自动导入
-
-#### 1、zzui自动导入
-
-在选择`zzui`组件的时候，如果当前文件中没有引入`zzui`，将会自动导入`zzui`，并`use` ， 如果当前已经引入了，则会插入选中的新组件。
-
-
-
-#### 2、工具库自动导入
-
-**触发方式：** 在文件中键入 `x` ，区分大小写，只能是小写 `x` 
-
-**效果：** 出现工具函数提示，移动对应的工具函数，会出现具体的信息，包括函数的作用、参数、参数类型、返回值等。按下回车键后，会自动引入当前工具函数。
-
-
-
-![](https://qn.huat.xyz/mac/20211011173223.png)
-
-![](https://qn.huat.xyz/mac/20211011173308.png)
-
-
-
-### 代码片段
-
-> 代码片段可以在vscode后台进行自定义配置，配置完成后，重启vscode即可生效！
-
-#### 原生代码片段
-
-插件已经内置了很多原生JavaScript代码片段，比如 `rps`直接生成 `return Promise.resolve()` 、`co=`直接生成 `const name = value` 、 `to` 直接生成 `condition ? value1 : value2`  等等，相关的文档正在整理中
-
-
-
-#### 功能片段
-
-输入自定义的前缀【配置代码片段时的`prefix`】，即可出触发，并附带功能片段的相关说明。
-
-![](https://qn.huat.xyz/mac/20211011173503.png)
-
-![](https://qn.huat.xyz/mac/20211011173601.png)
-
-#### 模板片段
-
-在vue文件中输入`tsvue2` 【vue2的ts模板】
-
-![](https://qn.huat.xyz/mac/20211011173731.png)
-
-
-
-### 内置webview
-
-**应用场景：** 当在开发使用`zzui`的时候，某一个组件的属性不是很清楚的时候，但是又懒的打开`zzui`官网去查询某个组件的文档，此时可直接选中当前组件，在vscode内部直接打开`zzui`官网，并且定位到当前组件，方便查询。
-
-**触发方式：** 选中组件，右击选择 `search in zzui` 或者 选中后使用快捷键： `shift+cmd+l` [`shift+ctrl+l`  windows]
-
-**效果：**
-
-![](https://qn.huat.xyz/mac/20211011173849.png)
-
-![](https://qn.huat.xyz/mac/20211011173933.png)
-
-
-
-### 自定义设置
-
-![](https://qn.huat.xyz/mac/20211011174108.png)
-
-1、zzui版本进行更新，只需要变更当前的链接即可，无需更新插件
-
-2、可自定义代码片段的api，只需遵循接口格式即可！
-
-### 语言支持
-
-支持 vue、react、js、ts
-
-
-
-励志做到一次安装，永久使用。
-
-
-### 相关文档
-
-1、vscode 插件 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin
-
-2、vscode 插件后台 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-admin
-
-3、vscode 插件后端api http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-api
-
-4、vscode配套文档代码 http://gitlab.zhuanspirit.com/yangxinhao/zz-vscode-plugin-docify
-
-5、vscode 插件api文档 https://www.showdoc.com.cn/zzvscodeplugin/7551418247207057
-
-6、vscode配套文档 https://ironc.gitee.io/vscode-docsify
-
-7、后台地址 https://vscode.ironc.cn 账号： zzfe 密码：zzfe
-
-8、api地址 https://vscode-api.ironc.cn/
+<h3 align="center">
+	<img class="image" src="https://qn.huat.xyz/mac/202308232134843.jpg" height="144">
+	<strong>Yao Copilot</strong>
+	<br>
+	A Visual Studio Code - ChatGPT Integration
+  <br>
+  <strong>转转 ZZ-UI 专属 vscode 插件! </strong>
+</h3>
+<p class="tag-wrap" align="center">
+   <a href="https://marketplace.visualstudio.com/items?itemName=y170088888.zz-yao" alt="Marketplace version">
+        <img src="https://img.shields.io/visual-studio-marketplace/v/y170088888.zz-yao?color=orange&label=VS%20Code%20Marketplace" />
+    </a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=y170088888.zz-yao" alt="Marketplace download count">
+        <img src="https://img.shields.io/visual-studio-marketplace/d/y170088888.zz-yao?color=blueviolet&label=Downloads" />
+    </a>
+    <a href="https://platform.openai.com/docs/api-reference/chat" alt="openai api">
+        <img src="https://img.shields.io/badge/ChatGPT-green.svg?label=ChatGPT-4&logo=openai" />
+    </a>
+</p>
+
+## 特色
+
+- ➕ 支持 zzui 组件自动导入
+- 📖 内置业务开发常用的代码片段、方法
+- 🌐 内置 zzui 官网，选中组件可直接打开对应文档
+- 🌐 内置 GPT 4，无需 openai-key、无需科学上网
+- 💻 右键菜单即可选用功能，支持快捷键，无需输入命令
+- 🚀 可以添加预定义提示词以便在提问的时候快速输入
+- 📤 可以导出代码或整个会话为 markdown 文件
+- 💾 可以将你的会话记录保存在本地硬盘，随时回放、继续和管理
+- 🗣️ 支持流式上下文对话并且可以随时暂停回答
+- 🔒 隐私安全，所有信息都保存在本地硬盘，不会将任何信息上传至任何服务器
+
+## AI 能力
+
+- **ChatGPT:发起提问 ❓**: 打开右键菜单，选中 🚀 启动 ChatGPT 即可发起任意提问
+- **ChatGPT:为什么这段代码出现了 BUG?🐛💻**: 使用查找代码错误功能来分析和突出代码中的错误
+- **ChatGPT:为我这段代码添加测试 ➕🧪💻**: 使用解释代码功能来更好地理解您的代码
+- **ChatGPT:重构这段代码并告诉我你改动了哪里?🔧💻**: 重构代码并清楚地了解您改变了什么
+- **ChatGPT:为我这段代码添加测试 ➕🧪💻**: 为您的代码轻松添加测试
+- **ChatGPT:自定义提问 ✏️❓**: 为 ChatGPT 生成自定义查询
+- **ChatGPT:增加预定义提示词 ➕**: 添加预定义的提示词，使提问更加高效
+- **ChatGPT:修改显示语言 🌍**: 通过快捷键和命令来设置您想要的语言。默认是中文
+- **ChatGPT:清空列表 🗑️**: 可以清空当前的会话
+- **ChatGPT:导出 markdown📤**: 可以导出当前的会话为 markdown 文件
+
+
+## zzui 支持
+
+- **自动补全`zzui`组件**
+- **自动导入`zzui`组件**
+- **自动 use `zzui`组件**
+- **内置 `zzui` 官网**
+
+
+
+## 代码片段
+
+- **基础片段**
+- **CSS片段**
+- **功能片段**
+- **模板片段**
+
+
+## 使用视频
+
+<video src="https://qn.huat.xyz/video/Yao-2023-08-20.mp4" controls>
+  Your browser does not support the video tag.
+</video>
+
+
+<style>
+.image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.tag-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tag-wrap a {
+   margin-right: 10px;
+}
+</style>

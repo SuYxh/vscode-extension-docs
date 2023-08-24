@@ -8,10 +8,9 @@ export const sidebar: DefaultTheme.Config["sidebar"] = {
       items: [
         { text: "概览", link: "/use/简介" },
         { text: "安装", link: "/use/安装" },
-        { text: "自动补全", link: "/use/自动补全" },
-        { text: "自动导入", link: "/use/自动导入" },
+        { text: "AI能力", link: "/use/AI能力" },
+        { text: "zzui支持", link: "/use/zzui" },
         { text: "代码片段", link: "/use/代码片段" },
-        { text: "内置 zzui 官网", link: "/use/zzui" },
         { text: "自定义设置", link: "/use/自定义设置" },
       ],
     }

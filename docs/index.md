@@ -3,12 +3,12 @@ layout: home
 layoutClass: "m-home-layout"
 
 hero:
-  name: Yao
-  text: 内置 GPT4
-  tagline: 一款平平无奇的 vscode 插件
+  name: Yao Copilot
+  text: 支持 GPT-4
+  tagline: 转转 ZZ-UI 专属 vscode 插件!
   image:
     src: /logo.png
-    alt: vscode-extension-docs
+    alt: Yao Copilot
   actions:
     - text: 使用文档
       link: /use/
@@ -42,10 +42,4 @@ features:
 .m-home-layout .details small {
   opacity: 0.8;
 }
-
-/* .m-home-layout .item:last-child .details {
-  display: flex;
-  justify-content: flex-end;
-  align-items: end;
-} */
 </style>

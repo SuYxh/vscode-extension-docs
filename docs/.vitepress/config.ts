@@ -12,9 +12,9 @@ export default defineConfig({
   base: process.env.APP_BASE_PATH || "/",
 
   lang: "zh-CN",
-  title: "vscode-extension-docs",
+  title: "Yao Copilot",
   description:
-    "成长之路，包含前端常用知识、源码阅读笔记、各种奇淫技巧、日常提效工具等",
+    "A Visual Studio Code - ChatGPT Integration 转转 ZZ-UI 专属 vscode 插件! ",
   head,
 
   lastUpdated: true,
@@ -43,7 +43,7 @@ export default defineConfig({
 
     footer: {
       message: "你相信光吗",
-      copyright: "Copyright © 2020-present",
+      copyright: "Copyright © 2021-present",
     },
 
     darkModeSwitchLabel: "外观",

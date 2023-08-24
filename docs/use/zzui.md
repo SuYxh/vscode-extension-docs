@@ -1,4 +1,25 @@
-## vscode内打开zz-ui官网
+## 自动补全`zzui`组件
+
+**触发方式：**在`vue`文件的`template`中键入 `<z` 
+
+**效果：** 提示`zzui`中的规范组件，和组件的相关介绍，如下图所示，按下回车，键入对应的组件，并附带组件的默认属性，并不是所有的组件都会有默认属性。如果当前没有引入相关的`zzui`组件，会在 `script` 中自动引入该组件并且自动`use`。
+
+![](https://qn.huat.xyz/mac/202308241118430.png)
+
+
+
+
+
+## 自动导入zzui
+
+在选择`zzui`组件的时候，如果当前文件中没有引入`zzui`，将会自动导入`zzui`，并`use` ， 如果当前已经引入了，则会插入选中的新组件。
+
+
+
+
+
+
+## 内置 ZZUI 官网
 
 **应用场景：** 当在开发使用`zzui`的时候，某一个组件的属性不是很清楚的时候，但是又懒的打开`zzui`官网去查询某个组件的文档，此时可直接选中当前组件，在vscode内部直接打开`zzui`官网，并且定位到当前组件，方便查询。
 
@@ -6,9 +27,7 @@
 
 **效果：**
 
+![image-20230823230228403](https://qn.huat.xyz/mac/202308232302445.png)
 
 
-
-
-<video controls height='70%' width='70%' autoplay="autoplay" loop="true" src="https://zzwos.58cdn.com.cn/wbuTsRqPowE/zzfecommon/4d816a9dadbc9afcfd843f2cb5dd1799.mov"></video>
 
