@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,Q as c}from"./chunks/framework.4dfdaa64.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"use/代码片段.md","lastUpdated":1693292835000}'),i={name:"use/代码片段.md"},l=c("",7),a=[l];function d(n,s,p,r,m,u){return o(),t("div",null,a)}const f=e(i,[["render",d]]);export{h as __pageData,f as default};

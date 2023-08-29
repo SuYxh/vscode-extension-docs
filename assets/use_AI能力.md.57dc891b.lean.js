@@ -1,0 +1,1 @@
+import{_ as a,o as e,c as t,Q as o}from"./chunks/framework.4dfdaa64.js";const b=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"use/AI能力.md","lastUpdated":1693292835000}'),r={name:"use/AI能力.md"},h=o("",26),i=[h];function l(d,c,n,p,s,u){return e(),t("div",null,i)}const _=a(r,[["render",l]]);export{b as __pageData,_ as default};

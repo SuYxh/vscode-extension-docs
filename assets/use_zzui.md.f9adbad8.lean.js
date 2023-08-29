@@ -1,0 +1,1 @@
+import{_ as e,o,c,Q as t}from"./chunks/framework.4dfdaa64.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"use/zzui.md","lastUpdated":1693292835000}'),a={name:"use/zzui.md"},d=t("",11),i=[d];function s(r,z,n,u,p,l){return o(),c("div",null,i)}const m=e(a,[["render",s]]);export{_ as __pageData,m as default};
