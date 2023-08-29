@@ -1,1 +1,0 @@
-import{_ as a,o as e,c as t,Q as i}from"./chunks/framework.4dfdaa64.js";const u=JSON.parse('{"title":"常用插件推荐","description":"","frontmatter":{},"headers":[],"relativePath":"plugin/index.md","lastUpdated":1693292835000}'),r={name:"plugin/index.md"},n=i("",76),s=[n];function l(o,h,p,c,m,d){return e(),t("div",null,s)}const q=a(r,[["render",l]]);export{u as __pageData,q as default};

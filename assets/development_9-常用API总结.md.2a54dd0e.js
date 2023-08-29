@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.4dfdaa64.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"development/9-常用API总结.md","lastUpdated":1693292835000}'),o={name:"development/9-常用API总结.md"};function r(n,s,_,c,p,d){return t(),a("div")}const l=e(o,[["render",r]]);export{i as __pageData,l as default};

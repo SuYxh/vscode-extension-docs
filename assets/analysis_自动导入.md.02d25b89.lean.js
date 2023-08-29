@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as t,Q as o}from"./chunks/framework.4dfdaa64.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"analysis/自动导入.md","lastUpdated":1693292835000}'),c={name:"analysis/自动导入.md"},d=o("",14),r=[d];function i(p,s,n,l,_,h){return a(),t("div",null,r)}const b=e(c,[["render",i]]);export{m as __pageData,b as default};
