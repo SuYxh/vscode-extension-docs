@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,Q as l}from"./chunks/framework.7fcead57.js";const b=JSON.parse('{"title":"PC 踩坑记录","description":"","frontmatter":{"outline":2},"headers":[],"relativePath":"pit/pc.md","lastUpdated":1693310095000}'),p={name:"pit/pc.md"},e=l("",10),o=[e];function r(t,c,i,F,y,D){return a(),n("div",null,o)}const C=s(p,[["render",r]]);export{b as __pageData,C as default};
