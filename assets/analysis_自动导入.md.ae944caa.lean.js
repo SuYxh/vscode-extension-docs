@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,Q as o}from"./chunks/framework.b5e70fdf.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"analysis/自动导入.md","lastUpdated":1708503635000}'),c={name:"analysis/自动导入.md"},d=o("",14),r=[d];function i(p,s,n,l,_,h){return t(),a("div",null,r)}const b=e(c,[["render",i]]);export{m as __pageData,b as default};

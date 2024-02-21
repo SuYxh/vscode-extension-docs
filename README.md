@@ -1,4 +1,3 @@
-# Fe-interview
+# vscode-extension-docs
 
-- 2023前端面试八股文 [js 部分整理完毕 -- 2023.8.31]
 

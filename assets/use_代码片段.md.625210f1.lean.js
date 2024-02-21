@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t,Q as c}from"./chunks/framework.b5e70fdf.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"use/代码片段.md","lastUpdated":1708503635000}'),i={name:"use/代码片段.md"},l=c("",7),a=[l];function d(n,s,p,r,m,u){return t(),o("div",null,a)}const f=e(i,[["render",d]]);export{h as __pageData,f as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as a,o,Q as t}from"./chunks/framework.b5e70fdf.js";const z=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"use/自定义设置.md","lastUpdated":1708503635000}'),i={name:"use/自定义设置.md"},r=t("",15),c=[r];function p(n,l,h,d,s,u){return o(),a("div",null,c)}const _=e(i,[["render",p]]);export{z as __pageData,_ as default};

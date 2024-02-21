@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as t,Q as i}from"./chunks/framework.b5e70fdf.js";const u=JSON.parse('{"title":"常用插件推荐","description":"","frontmatter":{},"headers":[],"relativePath":"plugin/index.md","lastUpdated":1708503635000}'),r={name:"plugin/index.md"},n=i("",76),s=[n];function l(o,h,p,c,m,d){return t(),e("div",null,s)}const q=a(r,[["render",l]]);export{u as __pageData,q as default};
