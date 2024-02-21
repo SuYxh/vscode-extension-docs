@@ -1,30 +1,24 @@
-#  什么是Webview
+## 什么是 Webview
 
-大家都知道，整个VSCode编辑器就是一张大的网页，其实，我们还可以在`Visual Studio Code`中创建完全自定义的、可以间接和`nodejs`通信的特殊网页（通过一个`acquireVsCodeApi`特殊方法），这个网页就叫`WebView`。内置的`Markdown`的预览就是使用`WebView`实现的。使用`Webview`可以构建复杂的、支持本地文件操作的用户界面。
+大家都知道，整个 VSCode 编辑器就是一张大的网页，其实，我们还可以在`Visual Studio Code`中创建完全自定义的、可以间接和`nodejs`通信的特殊网页（通过一个`acquireVsCodeApi`特殊方法），这个网页就叫`WebView`。内置的`Markdown`的预览就是使用`WebView`实现的。使用`Webview`可以构建复杂的、支持本地文件操作的用户界面。
 
-VSCode插件的WebView类似于iframe的实现，但并不是真正的iframe（我猜底层应该还是基于iframe实现的，只不过上层包装了一层），通过开发者工具可以看到：
+VSCode 插件的 WebView 类似于 iframe 的实现，但并不是真正的 iframe（我猜底层应该还是基于 iframe 实现的，只不过上层包装了一层），通过开发者工具可以看到：
 
-![W1506xH802](http://image.haoji.me/201810/20181013_173826_714_7935.png)
+![W1506xH802](https://qn.huat.xyz/mac/202402211551923.png)
 
-## 1.1. demo
+## 什么时候适合使用 WebView
 
-在我们的[vscode-plugin-demo](https://github.com/sxei/vscode-plugin-demo)中，我写了一个非常简单、没啥实际意义的`Webview`示例仅供参考，在任意编辑器右键可以看到`打开Webview`的菜单：
+虽然 Webview 令人很振奋，因为基于它我们可以随意发挥不受限制，但必须注意还是要慎用，毕竟 VSCode 是很注重性能的，不能因为你一个插件拖累了整个 IDE，一般仅在原有 API 和功能以及交互方式无法满足你时才需要考虑，另外，设计糟糕的 Webview 也很容易在`VS Code`中让人感觉不舒适，不能让人家一看就觉得你这是一张网页，好看的 UI 也很重要。
 
-![W1424xH842](http://image.haoji.me/201810/20181013_175235_562_4228.png)
-
-# 什么时候适合使用WebView
-
-虽然Webview令人很振奋，因为基于它我们可以随意发挥不受限制，但必须注意还是要慎用，毕竟VSCode是很注重性能的，不能因为你一个插件拖累了整个IDE，一般仅在原有API和功能以及交互方式无法满足你时才需要考虑，另外，设计糟糕的Webview也很容易在`VS Code`中让人感觉不舒适，不能让人家一看就觉得你这是一张网页，好看的UI也很重要。
-
-这是官网给出的建议，在使用webview之前请考虑以下事项：
+这是官网给出的建议，在使用 webview 之前请考虑以下事项：
 
 - 这个功能真的需要放在`VSCode`中吗？作为单独的应用程序或网站会不会更好呢？
-- webview是实现这个功能的唯一方法吗？可以使用常规VS Code API吗？
-- 您的webview是否会带来足够的用户价值以证明其高资源成本？
+- webview 是实现这个功能的唯一方法吗？可以使用常规 VS Code API 吗？
+- 您的 webview 是否会带来足够的用户价值以证明其高资源成本？
 
-# 正式开始WebView之旅
+## 正式开始 WebView 之旅
 
-## 3.1. 创建WebView
+### 创建 WebView
 
 ```js
 context.subscriptions.push(vscode.commands.registerCommand('extension.demo.openWebview', function (uri) {
@@ -43,12 +37,12 @@ context.subscriptions.push(vscode.commands.registerCommand('extension.demo.openW
 
 几点说明：
 
-- 默认情况下，在Web视图中禁用`JavaScript`，但可以通过传入`enableScripts: true`选项轻松启用；
-- 默认情况下当webview被隐藏时资源会被销毁，通过`retainContextWhenHidden: true`会一直保存，但会占用较大内存开销，仅在需要时开启；
+- 默认情况下，在 Web 视图中禁用`JavaScript`，但可以通过传入`enableScripts: true`选项轻松启用；
+- 默认情况下当 webview 被隐藏时资源会被销毁，通过`retainContextWhenHidden: true`会一直保存，但会占用较大内存开销，仅在需要时开启；
 
-## 3.2. 加载本地资源
+### 加载本地资源
 
-出于安全考虑，Webview默认无法直接访问本地资源，它在一个孤立的上下文中运行，想要加载本地图片、js、css等必须通过特殊的`vscode-resource:`协议，网页里面**所有的静态资源都要转换成这种格式，否则无法被正常加载**。
+出于安全考虑，Webview 默认无法直接访问本地资源，它在一个孤立的上下文中运行，想要加载本地图片、js、css 等必须通过特殊的`vscode-resource:`协议，网页里面**所有的静态资源都要转换成这种格式，否则无法被正常加载**。
 
 `vscode-resource:`协议类似于`file:`协议，但它只允许访问特定的本地文件。和`file:`一样，`vscode-resource:`从磁盘加载绝对路径的资源。
 
@@ -71,11 +65,11 @@ getExtensionFileVscodeResource: function(context, relativePath) {
 
 - 扩展程序安装目录中的文件。
 - 用户当前活动的工作区内。
-- 当然，你还可以使用`dataURI`直接在Webview中嵌入资源，这种方式没有限制；
+- 当然，你还可以使用`dataURI`直接在 Webview 中嵌入资源，这种方式没有限制；
 
-## 3.3. 从文件加载HTML内容
+### 从文件加载 HTML 内容
 
-默认不支持从文件加载HTML，需要自己封装代码，我简单封装了一个供大家参考：
+默认不支持从文件加载 HTML，需要自己封装代码，我简单封装了一个供大家参考：
 
 ```js
 /**
@@ -84,18 +78,27 @@ getExtensionFileVscodeResource: function(context, relativePath) {
  * @param {*} templatePath 相对于插件根目录的html文件相对路径
  */
 function getWebViewContent(context, templatePath) {
-    const resourcePath = path.join(context.extensionPath, templatePath);
-    const dirPath = path.dirname(resourcePath);
-    let html = fs.readFileSync(resourcePath, 'utf-8');
-    // vscode不支持直接加载本地资源，需要替换成其专有路径格式，这里只是简单的将样式和JS的路径替换
-    html = html.replace(/(<link.+?href="|<script.+?src="|<img.+?src=")(.+?)"/g, (m, $1, $2) => {
-        return $1 + vscode.Uri.file(path.resolve(dirPath, $2)).with({ scheme: 'vscode-resource' }).toString() + '"';
-    });
-    return html;
+  const resourcePath = path.join(context.extensionPath, templatePath);
+  const dirPath = path.dirname(resourcePath);
+  let html = fs.readFileSync(resourcePath, "utf-8");
+  // vscode不支持直接加载本地资源，需要替换成其专有路径格式，这里只是简单的将样式和JS的路径替换
+  html = html.replace(
+    /(<link.+?href="|<script.+?src="|<img.+?src=")(.+?)"/g,
+    (m, $1, $2) => {
+      return (
+        $1 +
+        vscode.Uri.file(path.resolve(dirPath, $2))
+          .with({ scheme: "vscode-resource" })
+          .toString() +
+        '"'
+      );
+    }
+  );
+  return html;
 }
 ```
 
-运行这段代码之后，会自动将HTML文件中`link`、`href`、`script`、`img`的资源相对路径全部替换成正确的`vscode-resource:`绝对路径，例如：
+运行这段代码之后，会自动将 HTML 文件中`link`、`href`、`script`、`img`的资源相对路径全部替换成正确的`vscode-resource:`绝对路径，例如：
 
 ```bash
 ../../lib/vue-2.5.17/vue.js
@@ -106,12 +109,12 @@ vscode-resource:/Users/test/workspace/vscode-plugin-demo/lib/vue-2.5.17/vue.js
 使用方法如下：
 
 ```js
-panel.webview.html = getWebViewContent(context, 'src/view/test-webview.html');
+panel.webview.html = getWebViewContent(context, "src/view/test-webview.html");
 ```
 
-## 3.4. 消息通信
+### 消息通信
 
-重头戏来了，`Webview`和普通网页非常类似，不能直接调用任何`VSCode`API，但是，它唯一特别之处就在于多了一个名叫`acquireVsCodeApi`的方法，执行这个方法会返回一个超级阉割版的`vscode`对象，这个对象里面有且仅有如下3个可以和插件通信的API：
+重头戏来了，`Webview`和普通网页非常类似，不能直接调用任何`VSCode`API，但是，它唯一特别之处就在于多了一个名叫`acquireVsCodeApi`的方法，执行这个方法会返回一个超级阉割版的`vscode`对象，这个对象里面有且仅有如下 3 个可以和插件通信的 API：
 
 ![W624xH430](http://image.haoji.me/201810/20181013_184810_640_4228.png)
 
@@ -120,7 +123,7 @@ panel.webview.html = getWebViewContent(context, 'src/view/test-webview.html');
 插件给`Webview`发送消息（支持发送任意可以被`JSON`化的数据）：
 
 ```js
-panel.webview.postMessage({text: '你好，我是小茗同学！'});
+panel.webview.postMessage({ text: "你好，我是小茗同学！" });
 ```
 
 `Webview`端接收：
@@ -135,20 +138,24 @@ window.addEventListener('message', event => {
 `Webview`主动发送消息给插件：
 
 ```js
-vscode.postMessage({text: '你好，我是Webview啊！'});
+vscode.postMessage({ text: "你好，我是Webview啊！" });
 ```
 
 插件接收：
 
 ```js
-panel.webview.onDidReceiveMessage(message => {
-	console.log('插件收到的消息：', message);
-}, undefined, context.subscriptions);
+panel.webview.onDidReceiveMessage(
+  (message) => {
+    console.log("插件收到的消息：", message);
+  },
+  undefined,
+  context.subscriptions
+);
 ```
 
-### 3.4.1. 简单通信封装
+##### 简单通信封装
 
-为了双方通信方便，我把它们简单封装了一下，仅供参考，Webview端：
+为了双方通信方便，我把它们简单封装了一下，仅供参考，Webview 端：
 
 ```js
 const callbacks = {}; // 存放所有的回调函数
@@ -158,84 +165,102 @@ const callbacks = {}; // 存放所有的回调函数
  * @param cb 可选的回调函数
  */
 function callVscode(data, cb) {
-    if (typeof data === 'string') {
-        data = { cmd: data };
-    }
-    if (cb) {
-        // 时间戳加上5位随机数
-        const cbid = Date.now() + '' + Math.round(Math.random() * 100000);
-		// 将回调函数分配一个随机cbid然后存起来，后续需要执行的时候再捞起来
-        callbacks[cbid] = cb;
-        data.cbid = cbid;
-    }
-    vscode.postMessage(data);
+  if (typeof data === "string") {
+    data = { cmd: data };
+  }
+  if (cb) {
+    // 时间戳加上5位随机数
+    const cbid = Date.now() + "" + Math.round(Math.random() * 100000);
+    // 将回调函数分配一个随机cbid然后存起来，后续需要执行的时候再捞起来
+    callbacks[cbid] = cb;
+    data.cbid = cbid;
+  }
+  vscode.postMessage(data);
 }
-window.addEventListener('message', event => {
-    const message = event.data;
-    switch (message.cmd) {
-		// 来自vscode的回调
-        case 'vscodeCallback':
-            console.log(message.data);
-            (callbacks[message.cbid] || function () { })(message.data);
-            delete callbacks[message.cbid]; // 执行完回调删除
-            break;
-        default: break;
-    }
+window.addEventListener("message", (event) => {
+  const message = event.data;
+  switch (message.cmd) {
+    // 来自vscode的回调
+    case "vscodeCallback":
+      console.log(message.data);
+      (callbacks[message.cbid] || function () {})(message.data);
+      delete callbacks[message.cbid]; // 执行完回调删除
+      break;
+    default:
+      break;
+  }
 });
 ```
 
 插件端：
 
 ```js
-let global = { projectPath, panel};
-panel.webview.onDidReceiveMessage(message => {
+let global = { projectPath, panel };
+panel.webview.onDidReceiveMessage(
+  (message) => {
     if (messageHandler[message.cmd]) {
-		// cmd表示要执行的方法名称
-        messageHandler[message.cmd](global, message);
+      // cmd表示要执行的方法名称
+      messageHandler[message.cmd](global, message);
     } else {
-        util.showError(`未找到名为 ${message.cmd} 的方法!`);
+      util.showError(`未找到名为 ${message.cmd} 的方法!`);
     }
-}, undefined, context.subscriptions);
+  },
+  undefined,
+  context.subscriptions
+);
 
 /**
  * 存放所有消息回调函数，根据 message.cmd 来决定调用哪个方法，
  * 想调用什么方法，就在这里写一个和cmd同名的方法实现即可
  */
 const messageHandler = {
-    // 弹出提示
-    alert(global, message) {
-        util.showInfo(message.info);
-    },
-    // 显示错误提示
-    error(global, message) {
-        util.showError(message.info);
-    },
-    // 回调示例：获取工程名
-    getProjectName(global, message) {
-        invokeCallback(global.panel, message, util.getProjectName(global.projectPath));
-    }
-}
+  // 弹出提示
+  alert(global, message) {
+    util.showInfo(message.info);
+  },
+  // 显示错误提示
+  error(global, message) {
+    util.showError(message.info);
+  },
+  // 回调示例：获取工程名
+  getProjectName(global, message) {
+    invokeCallback(
+      global.panel,
+      message,
+      util.getProjectName(global.projectPath)
+    );
+  },
+};
 /**
  * 执行回调函数
- * @param {*} panel 
- * @param {*} message 
- * @param {*} resp 
+ * @param {*} panel
+ * @param {*} message
+ * @param {*} resp
  */
 function invokeCallback(panel, message, resp) {
-    console.log('回调消息：', resp);
-    // 错误码在400-600之间的，默认弹出错误提示
-    if (typeof resp == 'object' && resp.code && resp.code >= 400 && resp.code < 600) {
-        util.showError(resp.message || '发生未知错误！');
-    }
-    panel.webview.postMessage({cmd: 'vscodeCallback', cbid: message.cbid, data: resp});
+  console.log("回调消息：", resp);
+  // 错误码在400-600之间的，默认弹出错误提示
+  if (
+    typeof resp == "object" &&
+    resp.code &&
+    resp.code >= 400 &&
+    resp.code < 600
+  ) {
+    util.showError(resp.message || "发生未知错误！");
+  }
+  panel.webview.postMessage({
+    cmd: "vscodeCallback",
+    cbid: message.cbid,
+    data: resp,
+  });
 }
 ```
 
-按上述方法封装之后，例如，Webview端想要执行名为`openFileInVscode`命令只需要这样：
+按上述方法封装之后，例如，Webview 端想要执行名为`openFileInVscode`命令只需要这样：
 
 ```js
-callVscode({cmd: 'openFileInVscode', path: `package.json`}, (message) => {
-    this.alert(message);
+callVscode({ cmd: "openFileInVscode", path: `package.json` }, (message) => {
+  this.alert(message);
 });
 ```
 
@@ -243,19 +268,19 @@ callVscode({cmd: 'openFileInVscode', path: `package.json`}, (message) => {
 
 ```js
 const messageHandler = {
-	// 省略其它方法
-    openFileInVscode(global, message) {
-        util.openFileInVscode(`${global.projectPath}/${message.path}`);
-		invokeCallback(global.panel, message, '打开文件成功！');
-    }
+  // 省略其它方法
+  openFileInVscode(global, message) {
+    util.openFileInVscode(`${global.projectPath}/${message.path}`);
+    invokeCallback(global.panel, message, "打开文件成功！");
+  },
 };
 ```
 
 以上封装的比较随便，只是给大家提供一个思路，有时间可以好好封装一下。
 
-## 3.5. 主题适配
+### 主题适配
 
-`Webview`可以根据`VS Code`的当前主题更改其外观，原理是body上面添加当前主题名称，主要有以下三种：
+`Webview`可以根据`VS Code`的当前主题更改其外观，原理是 body 上面添加当前主题名称，主要有以下三种：
 
 - `vscode-light` - 浅色主题；
 - `vscode-dark` -深色主题；
@@ -266,72 +291,68 @@ const messageHandler = {
 ```css
 /* 浅色主题 */
 .body.vscode-light {
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }
 /* 深色主题 */
 body.vscode-dark {
-    background: #252526;
-    color: white;
+  background: #252526;
+  color: white;
 }
 /* 高对比度主题 */
 body.vscode-high-contrast {
-    background: white;
-    color: red;
+  background: white;
+  color: red;
 }
 ```
 
 深色主题效果：
 
-![W1404xH770](http://image.haoji.me/201810/20181015_093741_153_8305.png)
+![W1404xH770](https://qn.huat.xyz/mac/202402211552815.png)
 
-## 3.6. 生命周期
+### 生命周期
 
-`webview`由创建它的扩展程序所有，返回的`panel`对象你必须自己保存，如果你的扩展程序丢失了这个引用，那么将无法再次重新访问该`webview`，即使Web视图继续显示在`vscode`中。
+`webview`由创建它的扩展程序所有，返回的`panel`对象你必须自己保存，如果你的扩展程序丢失了这个引用，那么将无法再次重新访问该`webview`，即使 Web 视图继续显示在`vscode`中。
 
-用户也可以随时关闭`webview`面板。当用户关闭webview面板时，webview本身将被销毁，此时不能再使用panel引用，否则将会出现异常，可以通过监听`onDidDispose`事件在这里面做一些销毁操作。
+用户也可以随时关闭`webview`面板。当用户关闭 webview 面板时，webview 本身将被销毁，此时不能再使用 panel 引用，否则将会出现异常，可以通过监听`onDidDispose`事件在这里面做一些销毁操作。
 
-可以通过`panel.dispose()`方法主动关闭webview。
+可以通过`panel.dispose()`方法主动关闭 webview。
 
-## 3.7. 状态保持
+### 状态保持
 
-当webview移动到后台又再次显示时，webview中的任何状态都将丢失。
+当 webview 移动到后台又再次显示时，webview 中的任何状态都将丢失。
 
-解决此问题的最佳方法是使你的webview无状态，通过消息传递来保存webview的状态。
+解决此问题的最佳方法是使你的 webview 无状态，通过消息传递来保存 webview 的状态。
 
-### 3.7.1. state
+#### state
 
-在webview的js中我们可以使用`vscode.getState()`和`vscode.setState()`方法来保存和恢复JSON可序列化状态对象。当webview被隐藏时，即使webview内容本身被破坏，这些状态仍然会保存。当然了，当webview被销毁时，状态将被销毁。
+在 webview 的 js 中我们可以使用`vscode.getState()`和`vscode.setState()`方法来保存和恢复 JSON 可序列化状态对象。当 webview 被隐藏时，即使 webview 内容本身被破坏，这些状态仍然会保存。当然了，当 webview 被销毁时，状态将被销毁。
 
-### 3.7.2. 序列化
+#### 序列化
 
 通过注册`WebviewPanelSerializer`可以实现在`VScode`重启后自动恢复你的`webview`，当然，序列化其实也是建立在`getState`和`setState`之上的。
 
 注册方法：`vscode.window.registerWebviewPanelSerializer`
 
-### 3.7.3. retainContextWhenHidden
+#### retainContextWhenHidden
 
-对于具有非常复杂的UI或状态且无法快速保存和恢复的`webview`，我们可以直接使用`retainContextWhenHidden`选项。设置`retainContextWhenHidden: true`后即使webview被隐藏到后台其状态也不会丢失。
+对于具有非常复杂的 UI 或状态且无法快速保存和恢复的`webview`，我们可以直接使用`retainContextWhenHidden`选项。设置`retainContextWhenHidden: true`后即使 webview 被隐藏到后台其状态也不会丢失。
 
 尽管`retainContextWhenHidden`很有吸引力，但它需要很高的内存开销，一般建议在实在没办法的时候才启用。
 `getState`和`setState`是持久化的首选方式，因为它们的性能开销要比`retainContextWhenHidden`低得多。
 
-# 调试
+## 调试
 
-注意，要调试Webview不能直接把VSCode的开发者工具打开，直接打开就会和我们最前面的截图看到的那样，你只能看到一个`<webview></webview>`标签，看不到代码，要看代码需要按下`Ctrl+Shift+P`然后执行`打开Webview开发工具`，英文版应该是`Open Webview Developer Tools`：
+注意，要调试 Webview 不能直接把 VSCode 的开发者工具打开，直接打开就会和我们最前面的截图看到的那样，你只能看到一个`<webview></webview>`标签，看不到代码，要看代码需要按下`Ctrl+Shift+P`然后执行`打开Webview开发工具`，英文版应该是`Open Webview Developer Tools`：
 
-![W906xH526](http://image.haoji.me/201810/20181013_192430_475_8260.png)
+![W906xH526](https://qn.huat.xyz/mac/202402211552409.png)
 
-审查Webview：
+审查 Webview：
 
-![W1152xH1086](http://image.haoji.me/201810/20181013_192845_230_7878.png)
+![W1152xH1086](https://qn.huat.xyz/mac/202402211552788.png)
 
-这个时候需要特别注意错误日志出现的位置，如果是Webview的错误，一般打印在前面说的这个开发者工具，但如果是插件端的错误只会打印在整个VSCode的开发者工具里。
+这个时候需要特别注意错误日志出现的位置，如果是 Webview 的错误，一般打印在前面说的这个开发者工具，但如果是插件端的错误只会打印在整个 VSCode 的开发者工具里。
 
-糟糕，距离最开始接触`Webview`已经有一段时间了，本来有挺多想写的，但是现在居然没灵感了，额……坑爹啊
-
-![W240xH227](http://image.haoji.me/201810/20181013_195716_692_5253.png)
-
-# 参考链接
+## 参考链接
 
 https://code.visualstudio.com/docs/extensions/webview
